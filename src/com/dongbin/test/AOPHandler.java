@@ -23,6 +23,7 @@ public class AOPHandler implements InvocationHandler {
                 System.out.println(arg);
             }
         }
+
     }
 
     @Override
