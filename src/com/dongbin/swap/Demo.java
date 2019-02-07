@@ -10,7 +10,7 @@ package com.dongbin.swap;
 public class Demo {
 
     public static void main(String[] args) {
-        int a=10,b=10;
+        int a=10,b=a;
         swap(a,b);
     }
 

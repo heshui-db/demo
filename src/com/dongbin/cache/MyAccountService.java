@@ -8,7 +8,7 @@ public class MyAccountService {
         this.manager = new MyCacheManager<>();
     }
 
-    public Account getAccoutByName(String name) {
+    public Account getAccountByName(String name) {
         Account result = manager.get(name);
         if (result != null) {
             return result;
