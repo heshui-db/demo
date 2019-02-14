@@ -94,6 +94,7 @@ public class DistributeLock {
                     List<Object> exec = transaction.exec();
                     if (exec != null) {
                         release = true;
+                        jedis.unwatch();
                         break;
                     }
                 }
@@ -101,9 +102,7 @@ public class DistributeLock {
         } catch (
                 Exception e) {
             e.printStackTrace();
-        } finally
-
-        {
+        } finally {
             if (jedis != null) {
                 jedis.close();
             }
