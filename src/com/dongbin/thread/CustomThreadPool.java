@@ -80,7 +80,6 @@ public class CustomThreadPool {
                     } catch (Exception e) {
 
                     }
-
                     task = blockingQueue.take();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
