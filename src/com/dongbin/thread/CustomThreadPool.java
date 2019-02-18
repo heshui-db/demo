@@ -20,7 +20,7 @@ public class CustomThreadPool {
     private final int poolSize;
 
     //worker 线程数量
-    private List<Thread> workers;
+    private List<Worker> workers;
 
     private ReentrantLock lock = new ReentrantLock();
 
@@ -53,9 +53,9 @@ public class CustomThreadPool {
     }
 
     private void createWorkerAndAddTask(Runnable runnable) {
-        Thread thread = new Thread(new Worker(runnable));
-        thread.start();
-        workers.add(thread);
+        Worker worker = new Worker(runnable);
+        new Thread(worker).start();
+        workers.add(worker);
     }
 
     /**
@@ -75,14 +75,23 @@ public class CustomThreadPool {
         public void run() {
             while (!stop) {
                 try {
-                    task.run();
+                    try {
+                        task.run();
+                    } catch (Exception e) {
+
+                    }
+
                     task = blockingQueue.take();
                 } catch (InterruptedException e) {
-                    stop = true;
+                    e.printStackTrace();
                 }
             }
 
             System.out.println("开始停止线程:" + Thread.currentThread().getName());
+        }
+
+        public void stop() {
+            stop = true;
         }
     }
 
@@ -90,8 +99,8 @@ public class CustomThreadPool {
      * 关闭方法
      */
     public void shutdown() {
-        for (Thread thread : workers) {
-            thread.interrupt();
+        for (Worker worker : workers) {
+            worker.stop();
         }
     }
 }

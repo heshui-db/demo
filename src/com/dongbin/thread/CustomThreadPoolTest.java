@@ -17,7 +17,7 @@ public class CustomThreadPoolTest {
                     System.out.println(Thread.currentThread().getName() + ":sleep[" + sleep + "]");
                 });
             }
-           Thread.sleep(10000);
+           //Thread.sleep(10000);
         } finally {
             customThreadPool.shutdown();
         }
