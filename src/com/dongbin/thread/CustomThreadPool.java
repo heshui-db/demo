@@ -74,16 +74,16 @@ public class CustomThreadPool {
         @Override
         public void run() {
             while (!stop) {
-                try {
+                if (task != null) {
+                    task.run();
+                } else {
                     try {
-                        task.run();
-                    } catch (Exception e) {
-
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
-                    task = blockingQueue.take();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
                 }
+                task = blockingQueue.poll();
             }
 
             System.out.println("开始停止线程:" + Thread.currentThread().getName());
