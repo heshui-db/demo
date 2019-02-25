@@ -1,17 +1,20 @@
 package com.dongbin.reflection;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
-        A a = null;
-        if (a instanceof A){
-            System.out.println("sss");
-        }
+    public static void main(String[] args) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+
+
+
+//        Class math = Class.forName("java.lang.Math");
+//        Method method = math.getMethod("abs",long.class);
+//        System.out.println(method.invoke(null,-100));
 
 //        Field[] declaredFields = B.class.getDeclaredFields();
 //        Arrays.asList(declaredFields).forEach(field -> System.out.print(field.getName()));

@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 
 public class TestDemoAnnotation {
 
+
     @Demo
     public void test() {
         System.out.println("test");
