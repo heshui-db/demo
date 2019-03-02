@@ -6,7 +6,7 @@ import com.dongbin.subscribe.MessageConsumerRedisImpl;
 public class PublishSubscribeTest {
 
     public static void main(String[] args) throws InterruptedException {
-        final String[] channels = {"channel-1", "channel-2"}22222;
+        final String[] channels = {"channel-1", "channel-2"};
 
         MessagePublisherRedisImpl messagePublisherRedis = new MessagePublisherRedisImpl(new RedisClient(), channels);
 
