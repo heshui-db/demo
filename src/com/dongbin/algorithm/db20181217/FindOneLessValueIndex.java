@@ -36,5 +36,7 @@ public class FindOneLessValueIndex {
     public static void main(String[] args) {
         int[] array = {6,5,2,1,2,6};
         System.out.println(getLessValueIndex(array));
+
+        System.out.println();
     }
 }
