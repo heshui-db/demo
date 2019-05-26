@@ -8,17 +8,19 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class Main {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
+
+        Notify notify = () -> System.out.println("hello");
         BlockingQueue queue = new ArrayBlockingQueue(4);
-        CustomThreadPool pool = new CustomThreadPool(3, 5, 1, TimeUnit.SECONDS, queue, null);
+        CustomThreadPool pool = new CustomThreadPool(3, 5, 1, TimeUnit.SECONDS, queue, notify);
         for (int i = 0; i < 10; i++) {
             pool.execute(new Task(i + ""));
         }
 
 
-        Thread.sleep(15000);
+        //等线程执行完成
+        pool.mainNotify();
         pool.shutdown();
-
 
     }
 

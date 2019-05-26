@@ -155,6 +155,12 @@ public class CustomThreadPool {
     public void shutdown() {
         System.out.println("关闭线程池");
         isShutdown.set(true);
+        tryClose(true);
+    }
+
+    public void shutdownNow() {
+        System.out.println("关闭线程池");
+        isShutdown.set(true);
         tryClose(false);
     }
 
