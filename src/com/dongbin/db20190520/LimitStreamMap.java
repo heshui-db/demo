@@ -18,11 +18,11 @@ public class LimitStreamMap {
     }
 
     public LimitStreamMap() {
-        this(10, 1000000, TimeUnit.MINUTES);
+        this(10, 1000, TimeUnit.MINUTES);
     }
 
     public boolean isLimit() {
-        long current = System.currentTimeMillis() / 1000;
+        long current = System.currentTimeMillis() / this.threshold;
         AtomicLong atomicLong = limitMap.get(current);
         if (atomicLong == null) {
             atomicLong = new AtomicLong();
